@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import BottomNav from "@/components/BottomNav";
 import TicketModal from "@/components/TicketModal";
 
 export default function ProfilePage() {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<"tickets" | "saved" | "memories">(
     "tickets"
   );
@@ -122,7 +124,10 @@ export default function ProfilePage() {
             </div>
           </div>
           <div className="flex gap-3 w-full max-w-sm">
-            <button className="flex-1 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide transition-all active:scale-95 shadow-lg shadow-primary/20">
+            <button
+              onClick={() => router.push("/edit-profile")}
+              className="flex-1 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide transition-all active:scale-95 shadow-lg shadow-primary/20"
+            >
               Edit Profile
             </button>
             <button className="size-12 flex cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-primary/10 dark:bg-primary/20 text-primary transition-all active:scale-95">
